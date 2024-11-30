@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>User Profile</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+<div id="wrapper" class="container">
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+            <div class="container-fluid">
+                    <br>
+                    <div class="modal-header d-flex justify-content-between">
+                        <div class="align-middle h1">User Profile</div>
+                        <div><a class="btn btn-primary" href="/">Home Page</a></div>
+                    </div>
+                    <br>
+                    <div class="card border-left-primary shadow" style="padding-left: 0">
+                        <table class="table">
+                            <tr>
+                                <td>Username:</td>
+                                <td><span class="text-dark" id="usernameField" th:text="${username}"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Name:</td>
+                                <td><span class="text-dark" id="firstnameField" th:text="${firstname}"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Surname:</td>
+                                <td><span class="text-dark" id="lastnameField" th:text="${lastname}"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Email:</td>
+                                <td><span class="text-dark" id="emailField" th:text="${email}"></span></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#editModal">
+                        Edit Profile
+                    </button>
+
+                    <!-- Edit Modal -->
+                    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header d-flex justify-content-between">
+                                    <h5 class="modal-title" id="editModalLabel">Edit Profile</h5>
+                                    <button type="button" class="close btn btn-outline-danger" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">X</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Form for editing -->
+                                    <form  th:action="@{/profile/update}" method="post">
+                                        <div class="form-group">
+                                            <label for="username">Username:</label>
+                                            <input type="text" required class="form-control" id="username" name="username" placeholder="Enter username" disabled th:value="${username}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="firstname">Name:</label>
+                                            <input type="text" required class="form-control" id="firstname" name="firstname" placeholder="Enter name" th:value="${firstname}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lastname">Surname:</label>
+                                            <input type="text" required class="form-control" id="lastname" name="lastname" placeholder="Enter surname" th:value="${lastname}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email:</label>
+                                            <input type="email" required class="form-control" id="email" name="email" placeholder="Enter email" th:value="${email}">
+                                        </div>
+                                        <br>
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="/logout">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+</body>
+
+</html>
